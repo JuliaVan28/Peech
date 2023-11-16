@@ -11,7 +11,7 @@ import SwiftUI
 struct PeechApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FileListView()
         }
     }
 }
