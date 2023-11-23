@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4EF5E4B8-3D74-4115-BC96-80A4BE8CE41C"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1EAEFA35-8EE0-4CDC-B6D3-3EA1663F6B7B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peech/Camera/DataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "DataModel"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "1EAEFA35-8EE0-4CDC-B6D3-3EA1663F6B7B - 2115437b3b08961d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "384">
+               </Location>
+               <Location
+                  uuid = "1EAEFA35-8EE0-4CDC-B6D3-3EA1663F6B7B - 39a73719adb1a6b4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "1EAEFA35-8EE0-4CDC-B6D3-3EA1663F6B7B - 2115437b3b08961d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "424">
+               </Location>
+               <Location
+                  uuid = "1EAEFA35-8EE0-4CDC-B6D3-3EA1663F6B7B - 39a73719adb1a6b4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "172">
+               </Location>
+               <Location
+                  uuid = "1EAEFA35-8EE0-4CDC-B6D3-3EA1663F6B7B - 2115437b3b08967c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "424">
+               </Location>
+               <Location
+                  uuid = "1EAEFA35-8EE0-4CDC-B6D3-3EA1663F6B7B - 39a73719adb1a6d5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "172">
+               </Location>
+               <Location
+                  uuid = "1EAEFA35-8EE0-4CDC-B6D3-3EA1663F6B7B - 2115437b3b08e9c7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "424">
+               </Location>
+               <Location
+                  uuid = "1EAEFA35-8EE0-4CDC-B6D3-3EA1663F6B7B - 39a73719adb1d96e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "172">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C983691-060C-48F8-AA2B-98E73C16BF33"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peech/Camera/DataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "handleCameraPhotos()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1C983691-060C-48F8-AA2B-98E73C16BF33 - 39a73719adb1d928"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "964">
+               </Location>
+               <Location
+                  uuid = "1C983691-060C-48F8-AA2B-98E73C16BF33 - b087b3d951fa5d5b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "1C983691-060C-48F8-AA2B-98E73C16BF33 - 797f9f0202206d2a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  uuid = "1C983691-060C-48F8-AA2B-98E73C16BF33 - 39a73719adb1d928"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "1112">
+               </Location>
+               <Location
+                  uuid = "1C983691-060C-48F8-AA2B-98E73C16BF33 - 39a73719adb1d949"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "1112">
+               </Location>
+               <Location
+                  uuid = "1C983691-060C-48F8-AA2B-98E73C16BF33 - 39a73719adb1d9e2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "1112">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "22EB0470-2670-4A62-A298-CDEBF286657E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peech/Camera/DataModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "handleCameraPhotos()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "22EB0470-2670-4A62-A298-CDEBF286657E - 39a73719adb1d98f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "22EB0470-2670-4A62-A298-CDEBF286657E - 797f9f0202206d8d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Peech.DataModel.handleCameraPhotos() async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Camera/DataModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "244">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA49D519-D15A-44F1-9A3A-0F6DE70F12D4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peech/Camera/CachedImageManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "requestImage(for:targetSize:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0040BA18-BB3A-43DD-9039-43C519058A29"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peech/AudioCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "saveAudio()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0040BA18-BB3A-43DD-9039-43C519058A29 - 1ca61464492c5ccc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Peech.AudioCoordinator.saveAudio() -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/AudioCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "136">
+               </Location>
+               <Location
+                  uuid = "0040BA18-BB3A-43DD-9039-43C519058A29 - 337a7d0e7de3289a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.AVAudioBuffer) -&gt; () in Peech.AudioCoordinator.saveAudio() -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/AudioCoordinator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "176">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AED310EE-71BC-482C-A81F-0CBB95D359D2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peech/AudioCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "convertTextToSpeech(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
