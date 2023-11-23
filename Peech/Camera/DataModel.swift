@@ -20,7 +20,6 @@ final class DataModel: ObservableObject {
     @Published var shouldPresentPhotoPreview = false
     
     var isPhotosLoaded = false
-    //@State var shouldPresentPhotoPreview: Bool = false
     
     init() {
         Task {
@@ -85,7 +84,7 @@ final class DataModel: ObservableObject {
                 try await photoCollection.addImage(imageData)
                 logger.debug("Added image data to photo collection.")
                 
-                DispatchQueue.main.async {
+                await MainActor.run {
                     self.shouldPresentPhotoPreview.toggle()
                 }
                 
@@ -117,7 +116,7 @@ final class DataModel: ObservableObject {
         await photoCollection.cache.requestImage(for: asset, targetSize: CGSize(width: 256, height: 256))  { result in
             if let result = result {
                 Task { @MainActor in
-                    self.thumbnailImage = result.image
+                    self.thumbnailImage = Image(uiImage: result.image!)
                 }
             }
         }

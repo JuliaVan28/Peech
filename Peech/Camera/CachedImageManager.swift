@@ -59,7 +59,7 @@ actor CachedImageManager {
     }
     
     @discardableResult
-    func requestImage(for asset: PhotoAsset, targetSize: CGSize, completion: @escaping ((image: Image?, isLowerQuality: Bool)?) -> Void) -> PHImageRequestID? {
+    func requestImage(for asset: PhotoAsset, targetSize: CGSize, completion: @escaping ((image: UIImage?, isLowerQuality: Bool)?) -> Void) -> PHImageRequestID? {
         guard let phAsset = asset.phAsset else {
             completion(nil)
             return nil
@@ -74,7 +74,7 @@ actor CachedImageManager {
                 completion(nil)
             } else if let image = image {
                 let isLowerQualityImage = (info?[PHImageResultIsDegradedKey] as? NSNumber)?.boolValue ?? false
-                let result = (image: Image(uiImage: image), isLowerQuality: isLowerQualityImage)
+                let result = (image: image, isLowerQuality: isLowerQualityImage)
                 completion(result)
             } else {
                 completion(nil)

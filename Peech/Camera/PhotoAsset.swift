@@ -16,16 +16,13 @@ struct PhotoAsset: Identifiable {
     
     typealias MediaType = PHAssetMediaType
     
-    var isFavorite: Bool {
-        phAsset?.isFavorite ?? false
-    }
     
     var mediaType: MediaType {
         phAsset?.mediaType ?? .unknown
     }
     
     var accessibilityLabel: String {
-        "Photo\(isFavorite ? ", Favorite" : "")"
+        "Photo"
     }
 
     init(phAsset: PHAsset, index: Int?) {
@@ -69,7 +66,7 @@ struct PhotoAsset: Identifiable {
 
 extension PhotoAsset: Equatable {
     static func ==(lhs: PhotoAsset, rhs: PhotoAsset) -> Bool {
-        (lhs.identifier == rhs.identifier) && (lhs.isFavorite == rhs.isFavorite)
+        (lhs.identifier == rhs.identifier)
     }
 }
 

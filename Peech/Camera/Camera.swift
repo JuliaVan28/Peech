@@ -19,12 +19,7 @@ class Camera: NSObject {
     private var sessionQueue: DispatchQueue!
     
     private var allCaptureDevices: [AVCaptureDevice] {
-        AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInTrueDepthCamera, .builtInDualCamera, .builtInDualWideCamera, .builtInWideAngleCamera, .builtInUltraWideCamera], mediaType: .video, position: .unspecified).devices
-    }
-    
-    private var frontCaptureDevices: [AVCaptureDevice] {
-        allCaptureDevices
-            .filter { $0.position == .front }
+        AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInTrueDepthCamera, .builtInDualCamera, .builtInDualWideCamera], mediaType: .video, position: .back).devices
     }
     
     private var backCaptureDevices: [AVCaptureDevice] {
@@ -39,9 +34,6 @@ class Camera: NSObject {
         #else
         if let backDevice = backCaptureDevices.first {
             devices += [backDevice]
-        }
-        if let frontDevice = frontCaptureDevices.first {
-            devices += [frontDevice]
         }
         #endif
         return devices
@@ -63,11 +55,6 @@ class Camera: NSObject {
     
     var isRunning: Bool {
         captureSession.isRunning
-    }
-    
-    var isUsingFrontCaptureDevice: Bool {
-        guard let captureDevice = captureDevice else { return false }
-        return frontCaptureDevices.contains(captureDevice)
     }
     
     var isUsingBackCaptureDevice: Bool {
@@ -161,9 +148,7 @@ class Camera: NSObject {
         photoOutput.maxPhotoQualityPrioritization = .balanced
         
         updateMaxPhotoDimensions()
-        
-        updateVideoOutputConnection()
-        
+                
         isCaptureSessionConfigured = true
         
         success = true
@@ -221,15 +206,6 @@ class Camera: NSObject {
         
         updateMaxPhotoDimensions()
         
-        updateVideoOutputConnection()
-    }
-    
-    private func updateVideoOutputConnection() {
-        if let videoOutput = videoOutput, let videoOutputConnection = videoOutput.connection(with: .video) {
-            if videoOutputConnection.isVideoMirroringSupported {
-                videoOutputConnection.isVideoMirrored = isUsingFrontCaptureDevice
-            }
-        }
     }
     
     private func updateMaxPhotoDimensions() {

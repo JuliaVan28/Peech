@@ -11,8 +11,12 @@ struct CameraView: View {
     @StateObject private var model = DataModel()
     
     private static let barHeightFactor = 0.15
+    
+//        init() {
+//            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+//        }
+    
     var body: some View {
-        NavigationStack {
             GeometryReader { geometry in
                 ViewfinderView(image:  $model.viewfinderImage)
                     .overlay(alignment: .top) {
@@ -42,34 +46,26 @@ struct CameraView: View {
             }
             .navigationTitle("Camera")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarHidden(true)
             .ignoresSafeArea()
             .statusBar(hidden: true)
-        }
-        .sheet(isPresented: $model.shouldPresentPhotoPreview)
-        {
-            if let photoAsset = model.photoCollection.photoAssets.first {
-                PhotoView(asset: photoAsset, cache: model.photoCollection.cache)
+            .navigationDestination(isPresented: $model.shouldPresentPhotoPreview)
+            {
+                if let photoAsset = model.photoCollection.photoAssets.first {
+                    PhotoView(asset: photoAsset, cache: model.photoCollection.cache)
+                }
             }
         }
-    }
     
     private func buttonsView() -> some View {
         HStack(spacing: 70) {
-            
-            Spacer()
-            
             NavigationLink {
-                
                 PhotoCollectionView(photoCollection: model.photoCollection)
-                
                     .onAppear {
                         model.camera.isPreviewPaused = true
                     }
                     .onDisappear {
                         model.camera.isPreviewPaused = false
                     }
-                
             } label: {
                 Label {
                     Text("Gallery")
@@ -77,9 +73,9 @@ struct CameraView: View {
                     ThumbnailView(image: model.thumbnailImage)
                 }
             }
+            .padding(.leading, 20)
             
             Button {
-                print("take photo Button is tapped")
                 model.camera.takePhoto()
             } label: {
                 Label {
@@ -88,23 +84,15 @@ struct CameraView: View {
                     ZStack {
                         Circle()
                             .strokeBorder(.white, lineWidth: 3)
-                            .frame(width: 62, height: 62)
+                            .frame(width: 72, height: 72)
                         Circle()
                             .fill(.white)
-                            .frame(width: 50, height: 50)
+                            .frame(width: 60, height: 60)
                         
                     }
                 }
             }
-            
-            Button {
-                model.shouldPresentPhotoPreview.toggle()
-            } label: {
-                Label("Use Photo", systemImage: "chevron.right")
-                    .font(.system(size: 1, weight: .bold))
-                    .foregroundColor(.white)
-            }
-            
+            .accessibilityLabel("Take Photo")
             Spacer()
             
         }

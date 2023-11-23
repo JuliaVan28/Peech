@@ -34,7 +34,7 @@ struct PhotoItemView: View {
             imageRequestID = await cache.requestImage(for: asset, targetSize: imageSize) { result in
                 Task {
                     if let result = result {
-                        self.image = result.image
+                        self.image = Image(uiImage: result.image!)
                     }
                 }
             }

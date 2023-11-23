@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
+
 
 @main
 struct PeechApp: App {
     var body: some Scene {
         WindowGroup {
-            FileListView()
-        }
+            ContentView()
+        }.modelContainer(for: ConvertedFile.self)
     }
 }
