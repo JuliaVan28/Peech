@@ -10,51 +10,67 @@ import Vision
 import SwiftUI
 import AVFoundation
 
-final class TextProcessor: ObservableObject {
-    @State var recognizedStrings: [String]?
-    var convertedText: String = ""
+
+struct TextProcessor {
+    @Binding var recognizedStrings: [String]
+    var scannedImages: [UIImage]
     
-    func recogniseText(in image: CGImage?, completion: @escaping ([String]) -> Void) async  {
-        guard let cgImage = image else { 
-            completion([])
-            return 
+    var didFinishRecognition: () -> ()
+    
+    func recogniseText()  {
+        print("in recogniseText")
+        let queue = DispatchQueue(label: "textRecognitionQueue", qos: .userInitiated)
+        queue.async {
+            for image in scannedImages {
+                print("processing image")
+                
+                guard let cgImage = image.cgImage else {
+                    return
+                }
+                
+                do {
+                    let requestHandler = VNImageRequestHandler(cgImage: cgImage)
+                    
+                    // Perform the text-recognition request.
+                    try requestHandler.perform([createRecognitionRequest()])
+                    
+                } catch {
+                    print("Unable to perform the requests: \(error).")
+                }
+                
+                
+            }
+            DispatchQueue.main.async {
+                print("calling didFinishRecognition")
+                didFinishRecognition()
+            }
         }
         
-        // Create a new image-request handler.
-        let requestHandler = VNImageRequestHandler(cgImage: cgImage)
-        
-        // Create a new request to recognize text.
-        let request = VNRecognizeTextRequest(completionHandler: { request, error in
-            self.recognizeTextHandler(request: request, error: error, completion: completion)})
-        
-        do {
-            // Perform the text-recognition request.
-            try requestHandler.perform([request])
-        } catch {
-            print("Unable to perform the requests: \(error).")
-        }
     }
     
-    func recognizeTextHandler(request: VNRequest, error: Error?, completion: ([String]) -> Void) {
-        guard let observations =
-                request.results as? [VNRecognizedTextObservation] else {
-            completion([])
-            return
+    private func createRecognitionRequest() -> VNRecognizeTextRequest {
+        let request = VNRecognizeTextRequest { request, error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            guard let observations =
+                    request.results as? [VNRecognizedTextObservation] else {
+                return
+            }
+            
+            observations.forEach { observation in
+                guard let recognizedText = observation.topCandidates(1).first else { return }
+                
+                self.recognizedStrings.append(recognizedText.string)
+                print("recognized Strings \(self.recognizedStrings)")
+            }
         }
-        let recognizedStrings = observations.compactMap { observation in
-            // Return the string of the top VNRecognizedText instance.
-            return observation.topCandidates(1).first?.string
-        }
-        self.recognizedStrings = recognizedStrings
-        processRecognizedStrings(recognizedStrings)
-        completion(recognizedStrings)
+        
+        request.recognitionLevel = .accurate
+        request.usesLanguageCorrection = true
+        
+        return request
     }
     
-    func processRecognizedStrings(_ strings: [String]?) {
-        if let recognizedStrings = strings {
-            convertedText = recognizedStrings.joined(separator: " ")
-        } else {
-            print("recognizedStrings is nil")
-        }
-    }
 }

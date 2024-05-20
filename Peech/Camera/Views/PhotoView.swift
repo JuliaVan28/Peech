@@ -11,7 +11,7 @@ import os.log
 
 
 struct PhotoView: View {
-    @StateObject private var textProcessor = TextProcessor()
+   // @StateObject private var textProcessor = TextProcessor()
     
     var asset: PhotoAsset
     
@@ -45,13 +45,13 @@ struct PhotoView: View {
             }
         }
         .navigationDestination(isPresented: $shouldPresentSingleFileView) {
-            
+            /*
             let imageData = uiImage?.pngData()
             let convertedFile = ConvertedFile(title: "Neew fiel", text: textProcessor.convertedText, imageData: imageData)
             SingleFileView(currentFile: convertedFile)
             .onDisappear(perform: {
                 shouldPresentSingleFileView = false
-            })
+            })*/
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.white)
@@ -76,6 +76,7 @@ struct PhotoView: View {
     
     private func buttonView()  -> some View {
       Button  {
+          /*
             Task {
                     await textProcessor.recogniseText(in: cgImage) { recognizedStrings in
                         // Check if the array of recognized strings is not empty
@@ -86,8 +87,10 @@ struct PhotoView: View {
                             print("No text recognized.")
                         }
                     }
+           
                     
                 }
+           */
         } label: {
             Text("Convert")
                 .font(.system(size: 36))

@@ -12,10 +12,6 @@ struct CameraView: View {
     
     private static let barHeightFactor = 0.15
     
-//        init() {
-//            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-//        }
-    
     var body: some View {
             GeometryReader { geometry in
                 ViewfinderView(image:  $model.viewfinderImage)

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 import AVFoundation
 
 
@@ -15,14 +16,18 @@ struct SingleFileView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     
+    @Query var files: [ConvertedFile]
+    
     var currentFile: ConvertedFile
     private var thumbnailImage: UIImage
     
-    @State var isPlaying: Bool = false
-    @State var isPopoverPresented: Bool = false
-    @State var fileTitle = ""
+    @State private var speechSpeed: Float = 1.0
     
-    let synthesizer = AVSpeechSynthesizer()
+    @State private var synthesizer: AVSpeechSynthesizer? = AVSpeechSynthesizer()
+    
+    @State private var singleFileController: SingleFileController = SingleFileController()
+    
+    @State private var audioController: AudioController = AudioController()
     
     init(currentFile: ConvertedFile) {
         self.currentFile = currentFile
@@ -38,47 +43,71 @@ struct SingleFileView: View {
     }
     
     var body: some View {
-        VStack {
-            ScrollView {
-                Text(currentFile.text)
-                    .padding(.leading, 20)
-                    .padding(.trailing, 5)
-                    .accessibilityLabel("Converted Text")
+        ZStack {
+            VStack {
+                ScrollView {
+                    Text(currentFile.text)
+                        .padding(.leading, 20)
+                        .padding(.trailing, 5)
+                        .multilineTextAlignment(.leading)
+                        .accessibilityLabel("Converted Text")
+                }.contentMargins(.bottom, 100, for: .scrollContent)
             }
-            .overlay(alignment: .bottom) {
+            VStack {
+                Spacer()
                 HStack(spacing: 17) {
                     playButtonView()
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Audio file title")
+                        Text(currentFile.title)
                             .font(.system(size: 19))
                             .fontWeight(.semibold)
-                        
-                        Text("1:46")
-                            .font(.system(size: 17))
-                            .foregroundStyle(.black.opacity(0.7))
+                        Text(singleFileController.timerValue.asTimestamp)
+                                .font(.system(size: 17))
+                                .foregroundStyle(.opacity(0.7))
+                                .contentTransition(.numericText())
+                                .onChange(of: audioController.audioDuration) {
+                                    withAnimation(.default.speed(1)) {
+                                        singleFileController.timerValue = audioController.audioDuration
+                                        
+                                    }
+                                }
                     }.accessibilityHidden(true)
                     Spacer()
-                    speedButtonView()
+                   // speedButtonView()
                 }
                 .padding(.horizontal, 20)
-                .padding(.bottom, 20)
-                .frame(height: 100)
-                .background (
-                    .thinMaterial, in: RoundedRectangle(cornerRadius: 5.0, style: .continuous))
+                .frame(height: 80)
+                .background (.regularMaterial, in: RoundedRectangle(cornerRadius: 20.0, style: .continuous))
                 
-                
-            }.ignoresSafeArea(edges: .bottom)
-            
+            }.padding(.bottom, 20)
+                .padding(.horizontal, 10)
         }
-        .navigationTitle("Converted File")
+        .navigationBarBackButtonHidden(true)
+        .navigationTitle(currentFile.title == "Converted File" ? "Converted File" : currentFile.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            // MARK: Back button
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    if files.contains(currentFile) {
+                        dismiss()
+                    } else {
+                        singleFileController.isBackButtonPopoverPresented.toggle()
+                    }
+                    
+                } label: {
+                    HStack {
+                        Image(systemName: "chevron.backward")
+                        Text("Back")
+                    }
+                }
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 Menu {
                     Button(action: {
                         // "Save File" action
                         print("save button is pressed")
-                        isPopoverPresented.toggle()
+                        singleFileController.isSavePopoverPresented.toggle()
                     }) {
                         Label("Save File", systemImage: "square.and.arrow.down")
                     }
@@ -90,39 +119,62 @@ struct SingleFileView: View {
                         Label("Copy to Clipboard", systemImage: "doc.on.doc")
                     }
                 } label: {
-                    Image(systemName: "ellipsis").foregroundStyle(Color.black)
+                    Image(systemName: "ellipsis")
+                    
                 }
                 
             }
         }
-        .alert("One more step 🌝", isPresented: $isPopoverPresented) {
-           
-            TextField("Title", text: $fileTitle)
-            Button("Yaay") {
-                print("Saving file with title: \(fileTitle)")
-                saveNewFile(fileTitle: fileTitle)
-                isPopoverPresented.toggle()
+        //MARK: Alert for saving file from toolbar action
+        .alert("Let's save your file", isPresented: $singleFileController.isSavePopoverPresented) {
+            TextField("Title", text: $singleFileController.fileTitle)
+            Button("Save") {
+                print("Saving file with title: \(singleFileController.fileTitle)")
+                saveNewFile(fileTitle: singleFileController.fileTitle)
+                singleFileController.isSavePopoverPresented.toggle()
                 
             }.accessibilityLabel("Save")
-            Button("Nope", role: .cancel) { isPopoverPresented.toggle() }
+            Button("Cancel", role: .cancel) { singleFileController.isSavePopoverPresented.toggle() }
                 .accessibilityLabel("Cancel")
         } message: {
             Text("Enter the title of file")
         }
         
+        //MARK: Alert for saving file before dissmissing the view
+        .alert(
+            "Would you like to save your file?",
+            isPresented: $singleFileController.isBackButtonPopoverPresented
+        ) {
+            TextField("Title", text: $singleFileController.fileTitle)
+            Button("Save") {
+                print("Saving file with title: \(singleFileController.fileTitle)")
+                saveNewFile(fileTitle: singleFileController.fileTitle)
+                singleFileController.isBackButtonPopoverPresented.toggle()
+                
+            }.accessibilityLabel("Save")
+            Button(
+                "Cancel",
+                role: .cancel
+            ) { singleFileController.isBackButtonPopoverPresented.toggle()
+                dismiss()
+            }
+            .accessibilityLabel("Cancel")
+        } message: {
+            Text("Enter the title of file")
+        }
+        
         .onDisappear(perform: {
-            synthesizer.stopSpeaking(at: .immediate)
-            isPlaying = false
+            audioController.stopAudio()
         })
     }
     
     private func playButtonView() -> some View {
         Button() {
-            if isPlaying == false {
-                playAudio()
+            if audioController.isPlaying == false {
+                print("trying audioController.playAudio")
+                audioController.playAudio(text: currentFile.text)
             } else {
-                synthesizer.pauseSpeaking(at: .immediate)
-                isPlaying.toggle()
+                audioController.pauseAudio()
             }
         } label: {
             ZStack {
@@ -131,38 +183,32 @@ struct SingleFileView: View {
                         Rectangle().foregroundStyle(Color.black).opacity(0.5)
                             .cornerRadius(6)
                     }
-                Image(systemName: isPlaying ? "pause.fill" : "play.fill")
+                Image(systemName: audioController.isPlaying ? "pause.fill" : "play.fill")
                     .foregroundStyle(Color.white)
                     .font(.system(size: 25))
             }
-        }.accessibilityLabel(isPlaying ? "Pause audio" : "Play audio")
+        }.accessibilityLabel(audioController.isPlaying ? "Pause audio" : "Play audio")
     }
     
     private func speedButtonView() -> some View {
         Button() {
-            
+            singleFileController.changeAudioSpeed()
         } label: {
             Capsule()
                 .frame(width: 55, height: 35)
-                .foregroundStyle(.gray.opacity(0.2))
+                .foregroundStyle(.thickMaterial)
                 .overlay {
                     Text("1.5x")
                         .font(.callout)
-                        .foregroundStyle(.black)
                 }
-        }.accessibilityLabel("Change audio speed")
-    }
-    
-    private func playAudio() {
-        isPlaying.toggle()
-        
-        if synthesizer.isPaused {
-            synthesizer.continueSpeaking()
-        } else {
-            let utterance = AVSpeechUtterance(string: currentFile.text)
-            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-            synthesizer.speak(utterance)
-        }
+            
+        }.buttonStyle(.plain)
+        .accessibilityLabel("Change audio speed")
+        .sheet(isPresented: $singleFileController.isSpeechRateModalPresented) {
+                AudioSpeedModalView(speechRate: $speechSpeed)
+                .presentationDetents([.fraction(0.3)])
+                .onChange(of: speechSpeed, {audioController.rate = speechSpeed})
+              }
     }
     
     private func saveNewFile(fileTitle: String = "Converted File") {

@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
             endingLineNumber = "45"
-            landmarkName = "DataModel"
-            landmarkType = "3">
+            landmarkName = "handleCameraPhotos()"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "1EAEFA35-8EE0-4CDC-B6D3-3EA1663F6B7B - 2115437b3b08961d"
@@ -376,6 +376,69 @@
             endingLineNumber = "24"
             landmarkName = "convertTextToSpeech(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DEA906D8-514A-405C-AC68-289C57D56434"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peech/Controllers/TextProcessor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "recogniseText()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DEA906D8-514A-405C-AC68-289C57D56434 - a5d2f96739440536"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Peech.TextProcessor.recogniseText(in: Swift.Array&lt;__C.UIImage&gt;, completion: (Swift.Array&lt;Swift.String&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Controllers/TextProcessor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "696">
+               </Location>
+               <Location
+                  uuid = "DEA906D8-514A-405C-AC68-289C57D56434 - a5d2f96739440536"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Peech.TextProcessor.recogniseText(in: Swift.Array&lt;__C.UIImage&gt;, completion: (Swift.Array&lt;Swift.String&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Controllers/TextProcessor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "628">
+               </Location>
+               <Location
+                  uuid = "DEA906D8-514A-405C-AC68-289C57D56434 - a5d2f96739440536"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Peech.TextProcessor.recogniseText(in: Swift.Array&lt;__C.UIImage&gt;, completion: (Swift.Array&lt;Swift.String&gt;) -&gt; ()) async -&gt; ()"
+                  moduleName = "Peech"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuliia/Projects/Peech/Peech/Controllers/TextProcessor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "616">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
