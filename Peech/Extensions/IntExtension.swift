@@ -1,8 +1,8 @@
 //
 //  IntExtension.swift
-//  TheZooit
+//  Peech
 //
-//  Created by Yuliia on 20/10/23.
+//  Created by Yuliia on 20/05/24.
 //
 
 import Foundation

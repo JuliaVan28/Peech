@@ -73,13 +73,12 @@ struct SingleFileView: View {
                                 }
                     }.accessibilityHidden(true)
                     Spacer()
-                   // speedButtonView()
                 }
                 .padding(.horizontal, 20)
                 .frame(height: 80)
                 .background (.regularMaterial, in: RoundedRectangle(cornerRadius: 20.0, style: .continuous))
                 
-            }.padding(.bottom, 20)
+            }
                 .padding(.horizontal, 10)
         }
         .navigationBarBackButtonHidden(true)
@@ -115,6 +114,7 @@ struct SingleFileView: View {
                     Button(action: {
                         // "Copy to Clipboard" action
                         UIPasteboard.general.setValue(currentFile.text, forPasteboardType: "public.plain-text")
+                        singleFileController.isCopyAlertPresented.toggle()
                     }) {
                         Label("Copy to Clipboard", systemImage: "doc.on.doc")
                     }
@@ -150,7 +150,7 @@ struct SingleFileView: View {
                 print("Saving file with title: \(singleFileController.fileTitle)")
                 saveNewFile(fileTitle: singleFileController.fileTitle)
                 singleFileController.isBackButtonPopoverPresented.toggle()
-                
+                dismiss()
             }.accessibilityLabel("Save")
             Button(
                 "Cancel",
@@ -166,6 +166,27 @@ struct SingleFileView: View {
         .onDisappear(perform: {
             audioController.stopAudio()
         })
+        
+        //MARK: Alert for status after saving a file
+        .alert(isPresented: $singleFileController.isSaveAlertPresented.isPresented) {
+                        Alert(
+                            title: Text(singleFileController.isSaveAlertPresented.isSuccess ? "Successfully saved!" : "Couldn't save file"),
+                            dismissButton: .default(Text("OK")){
+                                // Close the screen when "OK" button is tapped
+                                singleFileController.isSaveAlertPresented.isPresented = false
+                            }
+                        )
+                    }
+        //MARK: Alert when text is copied
+        .alert(isPresented: $singleFileController.isCopyAlertPresented) {
+                        Alert(
+                            title: Text("Successfully copied!"),
+                            dismissButton: .default(Text("OK")){
+                                // Close the screen when "OK" button is tapped
+                                singleFileController.isCopyAlertPresented = false
+                            }
+                        )
+                    }
     }
     
     private func playButtonView() -> some View {
@@ -218,7 +239,9 @@ struct SingleFileView: View {
         context.insert(convertedFile)
         do {
             try context.save()
+            singleFileController.isSaveAlertPresented = (true, true)
         } catch {
+            singleFileController.isSaveAlertPresented = (true, false)
             print(error.localizedDescription)
         }
     }

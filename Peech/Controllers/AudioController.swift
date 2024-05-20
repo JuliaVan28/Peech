@@ -109,6 +109,11 @@ extension AudioController: AVSpeechSynthesizerDelegate {
         
     }
     
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        print("finished utterance")
+        pauseAudio()
+    }
+    
 }
 
 //MARK: - Timer

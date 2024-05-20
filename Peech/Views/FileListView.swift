@@ -11,6 +11,39 @@ import SwiftData
 struct FileListView: View {
     let files: [ConvertedFile]
     @Environment(\.modelContext) private var context
+        
+    @State private var shouldPresentScannerView: Bool = false
+    @State private var shouldPresentSingleFileView: Bool = false
+    @State private var shouldPresentTextNotFoundAlert: Bool = false
+
+    
+    
+    var body: some View {
+            List {
+                ForEach(files, id: \.id) { file in
+                    NavigationLink(value: file) {
+                        HStack {
+                            if let imageData = file.imageData, let uiImage = UIImage(data: imageData) {
+                                ThumbnailView(image: Image(uiImage: uiImage))
+                            } else {
+                                ThumbnailView(image: Image(systemName: "photo.fill"))
+                            }
+                            VStack(alignment: .leading) {
+                                Text(file.title)
+                                    .font(.title3)
+                                Text(file.creationDate, style: .date)
+                                    .font(.caption)
+                            }
+                        }
+                    }.accessibilityLabel("Converted File \(file.title)")
+                        .accessibilityHint("Tap to open file, swipe left to delete file")
+                }.onDelete(perform: deleteFile)
+            }
+            .accessibilityLabel("List of files")
+            .navigationDestination(for: ConvertedFile.self) { file in
+                SingleFileView(currentFile: file)
+            }
+    }
     
     private func deleteFile(indexSet: IndexSet) {
         indexSet.forEach { index in
@@ -21,33 +54,6 @@ struct FileListView: View {
             } catch {
                 print(error.localizedDescription)
             }
-        }
-    }
-    
-    var body: some View {
-        List {
-            ForEach(files, id: \.id) { file in
-                NavigationLink(value: file) {
-                    HStack {
-                        if let imageData = file.imageData, let uiImage = UIImage(data: imageData) {
-                            ThumbnailView(image: Image(uiImage: uiImage))
-                        } else {
-                            ThumbnailView(image: Image(systemName: "photo.fill"))
-                        }
-                        VStack(alignment: .leading) {
-                            Text(file.title)
-                                .font(.title3)
-                                Text(file.creationDate, style: .date)
-                                    .font(.caption)
-                        }
-                    }
-                }.accessibilityLabel("Converted File \(file.title)")
-                    .accessibilityHint("Tap to open file, swipe left to delete file")
-            }.onDelete(perform: deleteFile)
-        }
-        .accessibilityLabel("List of files")
-        .navigationDestination(for: ConvertedFile.self) { file in
-            SingleFileView(currentFile: file)
         }
     }
 }

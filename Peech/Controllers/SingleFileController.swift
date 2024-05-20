@@ -14,6 +14,8 @@ import SwiftData
     var isSavePopoverPresented: Bool = false
     var isBackButtonPopoverPresented: Bool = false
     var isSpeechRateModalPresented: Bool = false
+    var isSaveAlertPresented: (isPresented: Bool, isSuccess: Bool) = (false, true)
+    var isCopyAlertPresented: Bool = false
 
     
     var fileTitle = ""

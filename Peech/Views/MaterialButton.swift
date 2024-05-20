@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MaterialButton: View {
     var icon: String = "arrow.down.doc"
-    var label: String = "Upload File"
+    var label: String = "Import File"
     
     var body: some View {
             Rectangle()
